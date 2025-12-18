@@ -10,6 +10,46 @@ Configuration-driven testing separates test configuration from test code, allowi
 - **Manage test data** separately from test logic
 - **Run the same tests** across different configurations easily
 
+## Project Structure & Usage Flow
+
+```mermaid
+flowchart TD
+    Start([User Starts]) --> Setup[1. Setup<br/>venv + pip install]
+    Setup --> Config[2. Configure<br/>Edit YAML files]
+    
+    Config --> Env[config/env/<br/>dev.yaml, stage.yaml, prod.yaml]
+    Config --> Data[config/data/<br/>users.yaml, forms.yaml<br/>api/, db/]
+    Config --> Run[config/run/<br/>chrome_local.yaml]
+    
+    Env --> Write[3. Write Tests]
+    Data --> Write
+    Run --> Write
+    
+    Write --> UITests[tests/test_login.py<br/>UI Tests]
+    Write --> APITests[tests/test_api_example.py<br/>API Tests]
+    Write --> DBTests[tests/test_db_example.py<br/>DB Tests]
+    
+    UITests --> Execute[4. Run Tests<br/>pytest --env=dev --run=chrome_local]
+    APITests --> Execute
+    DBTests --> Execute
+    
+    Execute --> Conftest[conftest.py<br/>Loads Configs]
+    Conftest --> Core[core/config_loader.py<br/>+ Helper Modules]
+    
+    Core --> Pages[pages/<br/>Page Objects]
+    Core --> Browser[Browser/API/DB<br/>Execution]
+    
+    Pages --> Browser
+    Browser --> Results([Test Results])
+    
+    style Start fill:#e1f5ff
+    style Results fill:#d4edda
+    style Setup fill:#fff3cd
+    style Config fill:#fff3cd
+    style Write fill:#fff3cd
+    style Execute fill:#fff3cd
+```
+
 ## Folder Structure
 
 - `config/`
