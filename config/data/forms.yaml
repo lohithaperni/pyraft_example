@@ -1,0 +1,80 @@
+registration_form:
+  valid_data:
+    first_name: "John"
+    last_name: "Doe"
+    email: "john.doe@example.com"
+    phone: "+1234567890"
+    address: "123 Main St"
+    city: "New York"
+    zip_code: "10001"
+    country: "USA"
+    
+  invalid_data:
+    empty_email:
+      first_name: "John"
+      last_name: "Doe"
+      email: ""
+      phone: "+1234567890"
+      
+    invalid_email:
+      first_name: "John"
+      last_name: "Doe"
+      email: "notanemail"
+      phone: "+1234567890"
+      
+    short_password:
+      first_name: "John"
+      last_name: "Doe"
+      email: "john@example.com"
+      password: "123"
+      phone: "+1234567890"
+      
+    missing_required_fields:
+      first_name: ""
+      last_name: ""
+      email: "john@example.com"
+
+contact_form:
+  valid_data:
+    name: "Jane Smith"
+    email: "jane.smith@example.com"
+    subject: "Inquiry"
+    message: "This is a test message for contact form."
+    
+  invalid_data:
+    empty_name:
+      name: ""
+      email: "jane@example.com"
+      subject: "Test"
+      message: "Message"
+      
+    invalid_email_format:
+      name: "Jane Smith"
+      email: "invalid-email"
+      subject: "Test"
+      message: "Message"
+
+payment_form:
+  valid_data:
+    card_number: "4111111111111111"
+    cardholder_name: "John Doe"
+    expiry_month: "12"
+    expiry_year: "2025"
+    cvv: "123"
+    billing_address: "123 Main St"
+    
+  invalid_data:
+    invalid_card_number:
+      card_number: "1234"
+      cardholder_name: "John Doe"
+      expiry_month: "12"
+      expiry_year: "2025"
+      cvv: "123"
+      
+    expired_card:
+      card_number: "4111111111111111"
+      cardholder_name: "John Doe"
+      expiry_month: "01"
+      expiry_year: "2020"
+      cvv: "123"
+

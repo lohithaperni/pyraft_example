@@ -1,0 +1,84 @@
+expected_counts:
+  users_table:
+    min: 0
+    max: 10000
+    exact: null  # null means no exact count required
+    
+  products_table:
+    min: 0
+    max: 50000
+    
+  orders_table:
+    min: 0
+    max: 100000
+    
+  active_users:
+    min: 1
+    max: null
+
+expected_states:
+  user_after_registration:
+    status: "active"
+    email_verified: false
+    created_at: "not_null"
+    updated_at: "not_null"
+    last_login: null
+    
+  user_after_login:
+    last_login: "not_null"
+    updated_at: "not_null"
+    
+  product_after_creation:
+    status: "active"
+    stock: ">= 0"
+    created_at: "not_null"
+    price: "> 0"
+    
+  order_after_creation:
+    status: "pending"
+    total_amount: "> 0"
+    created_at: "not_null"
+    user_id: "not_null"
+    
+  order_after_completion:
+    status: "completed"
+    completed_at: "not_null"
+    updated_at: "not_null"
+
+data_integrity:
+  foreign_keys:
+    orders_user_id_exists: "All orders.user_id must exist in users.id"
+    order_items_product_id_exists: "All order_items.product_id must exist in products.id"
+    
+  constraints:
+    email_unique: "users.email must be unique"
+    sku_unique: "products.sku must be unique"
+    positive_price: "products.price must be > 0"
+    non_negative_stock: "products.stock must be >= 0"
+    
+  relationships:
+    user_orders_count: "User should have correct number of orders"
+    order_items_count: "Order should have at least one item"
+
+expected_data_types:
+  users:
+    id: "integer"
+    email: "string"
+    name: "string"
+    created_at: "datetime"
+    updated_at: "datetime"
+    
+  products:
+    id: "integer"
+    name: "string"
+    price: "decimal"
+    stock: "integer"
+    created_at: "datetime"
+    
+  orders:
+    id: "integer"
+    user_id: "integer"
+    total_amount: "decimal"
+    status: "string"
+    created_at: "datetime"
+

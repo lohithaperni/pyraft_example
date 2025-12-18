@@ -1,0 +1,6 @@
+selenium
+pytest
+pyyaml
+requests
+psycopg2-binary
+

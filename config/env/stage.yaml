@@ -1,0 +1,8 @@
+base_url: "https://platform-dev.revalu.world/"
+api_base_url: "https://api-stage.revalu.world"
+db_host: "stage-db.revalu.world"
+db_port: 5432
+db_name: "revalu_stage"
+timeout: 30
+retry_count: 3
+

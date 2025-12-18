@@ -1,0 +1,8 @@
+base_url: "https://platform.revalu.io/"
+api_base_url: "https://api.revalu.io"
+db_host: "prod-db.revalu.io"
+db_port: 5432
+db_name: "revalu_prod"
+timeout: 30
+retry_count: 3
+

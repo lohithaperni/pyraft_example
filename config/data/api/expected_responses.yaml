@@ -1,0 +1,104 @@
+login_success:
+  status_code: 200
+  response_body:
+    token: "string"
+    refresh_token: "string"
+    expires_in: 3600
+    user_id: "uuid_format"
+    email: "string"
+    role: "string"
+  response_time_ms: 500
+
+login_failure:
+  status_code: 401
+  response_body:
+    error: "Invalid credentials"
+    error_code: "AUTH_001"
+    message: "Email or password is incorrect"
+  response_time_ms: 200
+
+create_user_success:
+  status_code: 201
+  response_body:
+    id: "uuid_format"
+    name: "string"
+    email: "string"
+    created_at: "iso_datetime_format"
+    status: "active"
+  response_time_ms: 300
+
+create_user_failure:
+  status_code: 400
+  response_body:
+    error: "Validation failed"
+    error_code: "VAL_001"
+    fields:
+      email: "Email is required"
+  response_time_ms: 150
+
+get_user_success:
+  status_code: 200
+  response_body:
+    id: "uuid_format"
+    name: "string"
+    email: "string"
+    role: "string"
+    created_at: "iso_datetime_format"
+    updated_at: "iso_datetime_format"
+  response_time_ms: 100
+
+get_user_not_found:
+  status_code: 404
+  response_body:
+    error: "User not found"
+    error_code: "USR_001"
+    message: "The requested user does not exist"
+  response_time_ms: 100
+
+update_user_success:
+  status_code: 200
+  response_body:
+    id: "uuid_format"
+    name: "string"
+    email: "string"
+    updated_at: "iso_datetime_format"
+  response_time_ms: 200
+
+delete_user_success:
+  status_code: 204
+  response_body: null
+  response_time_ms: 150
+
+unauthorized:
+  status_code: 401
+  response_body:
+    error: "Unauthorized"
+    error_code: "AUTH_002"
+    message: "Authentication token is missing or invalid"
+  response_time_ms: 50
+
+forbidden:
+  status_code: 403
+  response_body:
+    error: "Forbidden"
+    error_code: "AUTH_003"
+    message: "You do not have permission to perform this action"
+  response_time_ms: 50
+
+server_error:
+  status_code: 500
+  response_body:
+    error: "Internal server error"
+    error_code: "SRV_001"
+    message: "An unexpected error occurred"
+  response_time_ms: 1000
+
+rate_limit_exceeded:
+  status_code: 429
+  response_body:
+    error: "Rate limit exceeded"
+    error_code: "RATE_001"
+    message: "Too many requests. Please try again later."
+    retry_after: 60
+  response_time_ms: 50
+

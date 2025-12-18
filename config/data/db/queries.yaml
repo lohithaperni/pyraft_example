@@ -1,0 +1,53 @@
+user_queries:
+  get_user_by_email: "SELECT * FROM users WHERE email = :email"
+  get_user_by_id: "SELECT * FROM users WHERE id = :user_id"
+  get_user_count: "SELECT COUNT(*) as count FROM users"
+  get_active_users: "SELECT * FROM users WHERE status = 'active'"
+  get_users_by_role: "SELECT * FROM users WHERE role = :role"
+  get_recent_users: "SELECT * FROM users WHERE created_at > :date ORDER BY created_at DESC LIMIT :limit"
+  
+product_queries:
+  get_product_by_id: "SELECT * FROM products WHERE id = :product_id"
+  get_products_by_category: "SELECT * FROM products WHERE category = :category"
+  get_products_in_stock: "SELECT * FROM products WHERE stock > 0"
+  get_low_stock_products: "SELECT * FROM products WHERE stock < :threshold"
+  get_product_count: "SELECT COUNT(*) as count FROM products"
+  
+order_queries:
+  get_order_by_id: "SELECT * FROM orders WHERE id = :order_id"
+  get_orders_by_user: "SELECT * FROM orders WHERE user_id = :user_id ORDER BY created_at DESC"
+  get_pending_orders: "SELECT * FROM orders WHERE status = 'pending'"
+  get_orders_by_status: "SELECT * FROM orders WHERE status = :status"
+  get_order_total: "SELECT SUM(total_amount) as total FROM orders WHERE user_id = :user_id"
+  
+insert_queries:
+  insert_user: |
+    INSERT INTO users (name, email, password_hash, role, status, created_at)
+    VALUES (:name, :email, :password_hash, :role, 'active', NOW())
+    RETURNING id
+    
+  insert_product: |
+    INSERT INTO products (name, description, price, category, stock, sku, created_at)
+    VALUES (:name, :description, :price, :category, :stock, :sku, NOW())
+    RETURNING id
+    
+  insert_order: |
+    INSERT INTO orders (user_id, total_amount, status, shipping_address, created_at)
+    VALUES (:user_id, :total_amount, 'pending', :shipping_address, NOW())
+    RETURNING id
+
+update_queries:
+  update_user_status: "UPDATE users SET status = :status, updated_at = NOW() WHERE id = :user_id"
+  update_product_stock: "UPDATE products SET stock = stock - :quantity WHERE id = :product_id"
+  update_order_status: "UPDATE orders SET status = :status, updated_at = NOW() WHERE id = :order_id"
+  
+delete_queries:
+  delete_user: "DELETE FROM users WHERE id = :user_id"
+  delete_product: "DELETE FROM products WHERE id = :product_id"
+  delete_test_data: "DELETE FROM {table} WHERE id IN :ids"
+  
+cleanup_queries:
+  cleanup_test_users: "DELETE FROM users WHERE email LIKE 'test_%' OR email LIKE '%@test.example.com'"
+  cleanup_test_products: "DELETE FROM products WHERE sku LIKE 'TEST-%' OR sku LIKE 'PROD-TEST-%'"
+  cleanup_test_orders: "DELETE FROM orders WHERE user_id IN (SELECT id FROM users WHERE email LIKE 'test_%')"
+

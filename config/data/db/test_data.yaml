@@ -1,0 +1,84 @@
+users_to_insert:
+  - name: "Test User 1"
+    email: "test_user_1@test.example.com"
+    password_hash: "hashed_password_1"
+    role: "user"
+    status: "active"
+    phone: "+1234567890"
+    
+  - name: "Test User 2"
+    email: "test_user_2@test.example.com"
+    password_hash: "hashed_password_2"
+    role: "user"
+    status: "active"
+    phone: "+1234567891"
+    
+  - name: "Test Admin"
+    email: "test_admin@test.example.com"
+    password_hash: "hashed_password_admin"
+    role: "administrator"
+    status: "active"
+    phone: "+1234567892"
+
+products_to_insert:
+  - name: "Test Product 1"
+    description: "This is a test product for automation"
+    price: 99.99
+    category: "electronics"
+    stock: 100
+    sku: "PROD-TEST-001"
+    
+  - name: "Test Product 2"
+    description: "Another test product"
+    price: 49.99
+    category: "clothing"
+    stock: 50
+    sku: "PROD-TEST-002"
+    
+  - name: "Test Product 3 - Out of Stock"
+    description: "Product with zero stock"
+    price: 29.99
+    category: "electronics"
+    stock: 0
+    sku: "PROD-TEST-003"
+
+orders_to_insert:
+  - user_id: 1  # Reference to test user
+    total_amount: 199.97
+    status: "pending"
+    shipping_address: "123 Test St, Test City, 12345"
+    items:
+      - product_id: 1
+        quantity: 2
+        price: 99.99
+        
+  - user_id: 1
+    total_amount: 49.99
+    status: "completed"
+    shipping_address: "123 Test St, Test City, 12345"
+    items:
+      - product_id: 2
+        quantity: 1
+        price: 49.99
+
+test_scenarios:
+  user_registration:
+    name: "New Test User"
+    email: "new_test_user_{timestamp}@test.example.com"
+    password_hash: "hashed_password"
+    role: "user"
+    
+  product_creation:
+    name: "New Test Product"
+    description: "Created by automation"
+    price: 19.99
+    category: "test_category"
+    stock: 10
+    sku: "PROD-TEST-{timestamp}"
+    
+  order_creation:
+    user_id: "{test_user_id}"
+    total_amount: 99.99
+    status: "pending"
+    shipping_address: "Test Address"
+

@@ -1,0 +1,13 @@
+valid_user:
+  email: "pavan1504@yopmail.com"
+  password: "Test@123"
+
+invalid_user:
+  email: "invalid@example.com"
+  password: "wrong_password"
+
+# Legacy SauceDemo credentials (for reference)
+saucedemo_user:
+  username: "standard_user"
+  password: "secret_sauce"
+

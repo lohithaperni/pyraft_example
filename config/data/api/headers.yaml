@@ -1,0 +1,51 @@
+default_headers:
+  Content-Type: "application/json"
+  Accept: "application/json"
+  User-Agent: "Test-Automation/1.0"
+  X-Request-ID: "test-request-{timestamp}"
+
+auth_tokens:
+  dev:
+    api_key: "dev-api-key-12345"
+    bearer_token: "dev-bearer-token-xyz"
+    api_secret: "dev-secret-key"
+    
+  stage:
+    api_key: "stage-api-key-67890"
+    bearer_token: "stage-bearer-token-abc"
+    api_secret: "stage-secret-key"
+    
+  prod:
+    api_key: "prod-api-key-REPLACE_IN_PRODUCTION"
+    bearer_token: "prod-bearer-token-REPLACE_IN_PRODUCTION"
+    api_secret: "prod-secret-key-REPLACE_IN_PRODUCTION"
+
+authenticated_headers:
+  dev:
+    Authorization: "Bearer {token}"
+    Content-Type: "application/json"
+    Accept: "application/json"
+    
+  stage:
+    Authorization: "Bearer {token}"
+    Content-Type: "application/json"
+    Accept: "application/json"
+    
+  prod:
+    Authorization: "Bearer {token}"
+    Content-Type: "application/json"
+    Accept: "application/json"
+
+custom_headers:
+  rate_limit_bypass:
+    X-Rate-Limit-Bypass: "true"
+    
+  admin_access:
+    X-Admin-Access: "true"
+    X-Admin-User-ID: "admin-123"
+    
+  trace_headers:
+    X-Trace-ID: "{trace_id}"
+    X-Correlation-ID: "{correlation_id}"
+    X-Request-Source: "automation"
+

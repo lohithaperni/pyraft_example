@@ -1,0 +1,113 @@
+create_user_request:
+  valid:
+    name: "John Doe"
+    email: "john.doe@example.com"
+    age: 30
+    role: "user"
+    phone: "+1234567890"
+    address:
+      street: "123 Main St"
+      city: "New York"
+      zip_code: "10001"
+      country: "USA"
+      
+  invalid:
+    missing_email:
+      name: "John Doe"
+      age: 30
+      role: "user"
+      
+    invalid_email:
+      name: "John Doe"
+      email: "notanemail"
+      age: 30
+      role: "user"
+      
+    missing_required_fields:
+      email: "john@example.com"
+      # name is required but missing
+      
+    invalid_age:
+      name: "John Doe"
+      email: "john@example.com"
+      age: -5
+      role: "user"
+
+login_request:
+  valid:
+    email: "pavan1504@yopmail.com"
+    password: "Test@123"
+    
+  invalid:
+    wrong_password:
+      email: "pavan1504@yopmail.com"
+      password: "WrongPassword"
+      
+    non_existent_user:
+      email: "nonexistent@example.com"
+      password: "Test@123"
+      
+    empty_credentials:
+      email: ""
+      password: ""
+
+create_product_request:
+  valid:
+    name: "Test Product"
+    description: "This is a test product"
+    price: 99.99
+    category: "electronics"
+    stock: 100
+    sku: "PROD-001"
+    
+  invalid:
+    negative_price:
+      name: "Test Product"
+      price: -10.00
+      category: "electronics"
+      
+    missing_required:
+      name: "Test Product"
+      # price is required but missing
+
+create_order_request:
+  valid:
+    user_id: 12345
+    items:
+      - product_id: "PROD-001"
+        quantity: 2
+        price: 99.99
+      - product_id: "PROD-002"
+        quantity: 1
+        price: 49.99
+    shipping_address:
+      street: "123 Main St"
+      city: "New York"
+      zip_code: "10001"
+      country: "USA"
+    payment_method: "credit_card"
+    
+  invalid:
+    empty_items:
+      user_id: 12345
+      items: []
+      
+    invalid_user_id:
+      user_id: -1
+      items:
+        - product_id: "PROD-001"
+          quantity: 1
+
+update_user_request:
+  valid:
+    name: "John Updated"
+    phone: "+9876543210"
+    address:
+      street: "456 New St"
+      city: "Los Angeles"
+      zip_code: "90001"
+      
+  partial_update:
+    phone: "+9876543210"
+    # Only updating phone, other fields remain unchanged
+

@@ -1,0 +1,81 @@
+checkout_flow:
+  step1_cart:
+    items:
+      - product_id: "PROD-001"
+        name: "Test Product 1"
+        quantity: 1
+        price: 99.99
+      - product_id: "PROD-002"
+        name: "Test Product 2"
+        quantity: 2
+        price: 49.99
+    total: 199.97
+    
+  step2_shipping:
+    address: "123 Main St"
+    city: "New York"
+    state: "NY"
+    zip_code: "10001"
+    country: "USA"
+    shipping_method: "standard"
+    estimated_delivery: "5-7 business days"
+    
+  step3_payment:
+    payment_method: "credit_card"
+    card_number: "4111111111111111"
+    cardholder_name: "John Doe"
+    expiry_month: "12"
+    expiry_year: "2025"
+    cvv: "123"
+    
+  step4_review:
+    subtotal: 199.97
+    shipping: 10.00
+    tax: 16.00
+    total: 225.97
+
+user_onboarding:
+  step1_signup:
+    email: "newuser@example.com"
+    password: "SecurePass123!"
+    confirm_password: "SecurePass123!"
+    
+  step2_profile:
+    first_name: "New"
+    last_name: "User"
+    phone: "+1234567890"
+    company: "Test Company"
+    
+  step3_verification:
+    verification_code: "123456"
+    email_verified: true
+    
+  step4_preferences:
+    language: "en"
+    timezone: "America/New_York"
+    notifications_enabled: true
+
+search_and_filter:
+  search_queries:
+    valid:
+      - query: "laptop"
+        expected_results: ">10"
+      - query: "wireless mouse"
+        expected_results: ">5"
+      - query: "keyboard"
+        expected_results: ">8"
+        
+    invalid:
+      - query: ""
+        expected_results: "0"
+      - query: "xyzabc123nonexistent"
+        expected_results: "0"
+        
+  filter_options:
+    price_range:
+      min: 0
+      max: 100
+    category: "electronics"
+    brand: "TestBrand"
+    in_stock: true
+

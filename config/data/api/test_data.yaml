@@ -1,0 +1,53 @@
+users:
+  valid_user_id: 12345
+  invalid_user_id: 99999
+  deleted_user_id: 11111
+  admin_user_id: 1
+  test_user_ids:
+    - 1001
+    - 1002
+    - 1003
+
+products:
+  valid_product_id: "PROD-001"
+  out_of_stock_id: "PROD-002"
+  discontinued_id: "PROD-003"
+  invalid_product_id: "INVALID-PROD"
+  test_product_ids:
+    - "PROD-TEST-001"
+    - "PROD-TEST-002"
+    - "PROD-TEST-003"
+
+orders:
+  valid_order_id: "ORD-001"
+  cancelled_order_id: "ORD-002"
+  completed_order_id: "ORD-003"
+  invalid_order_id: "INVALID-ORD"
+
+emails:
+  valid_emails:
+    - "test1@example.com"
+    - "test2@example.com"
+    - "user@revalu.world"
+  invalid_emails:
+    - "notanemail"
+    - "@example.com"
+    - "test@"
+    - ""
+
+test_data_sets:
+  user_creation:
+    batch_size: 10
+    prefix: "test_user_"
+    domain: "@test.example.com"
+    
+  product_creation:
+    batch_size: 5
+    category: "test_products"
+    base_price: 10.00
+
+ids_for_cleanup:
+  test_users: []
+  test_products: []
+  test_orders: []
+

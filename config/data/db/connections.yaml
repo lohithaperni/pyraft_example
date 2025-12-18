@@ -1,0 +1,51 @@
+dev:
+  host: "dev-db.revalu.world"
+  port: 5432
+  database: "revalu_dev"
+  username: "test_user"
+  password: "dev_password"
+  connection_string: "postgresql://test_user:dev_password@dev-db.revalu.world:5432/revalu_dev"
+  ssl_mode: "prefer"
+  pool_size: 5
+  max_overflow: 10
+  echo: false
+
+stage:
+  host: "stage-db.revalu.world"
+  port: 5432
+  database: "revalu_stage"
+  username: "stage_user"
+  password: "stage_password"
+  connection_string: "postgresql://stage_user:stage_password@stage-db.revalu.world:5432/revalu_stage"
+  ssl_mode: "require"
+  pool_size: 5
+  max_overflow: 10
+  echo: false
+
+prod:
+  host: "prod-db.revalu.io"
+  port: 5432
+  database: "revalu_prod"
+  username: "prod_user"
+  password: "REPLACE_IN_PRODUCTION"
+  connection_string: "postgresql://prod_user:REPLACE_IN_PRODUCTION@prod-db.revalu.io:5432/revalu_prod"
+  ssl_mode: "require"
+  pool_size: 10
+  max_overflow: 20
+  echo: false
+
+# Alternative database types (examples)
+mysql_example:
+  host: "mysql-dev.example.com"
+  port: 3306
+  database: "test_db"
+  username: "test_user"
+  password: "test_password"
+  connection_string: "mysql+pymysql://test_user:test_password@mysql-dev.example.com:3306/test_db"
+  charset: "utf8mb4"
+
+sqlite_example:
+  database: ":memory:"  # In-memory database for testing
+  # or file path: "test.db"
+  connection_string: "sqlite:///:memory:"
+

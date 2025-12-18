@@ -1,0 +1,37 @@
+admin_user:
+  email: "admin@example.com"
+  password: "Admin@123"
+  role: "administrator"
+  permissions:
+    - "read"
+    - "write"
+    - "delete"
+    - "admin"
+
+standard_user:
+  email: "user@example.com"
+  password: "User@123"
+  role: "user"
+  permissions:
+    - "read"
+    - "write"
+
+test_users:
+  - email: "test1@example.com"
+    password: "Test@123"
+    role: "user"
+  - email: "test2@example.com"
+    password: "Test@123"
+    role: "user"
+
+# Revalu platform users
+revalu_admin:
+  email: "admin@revalu.world"
+  password: "Admin@123"
+  role: "administrator"
+
+revalu_user:
+  email: "pavan1504@yopmail.com"
+  password: "Test@123"
+  role: "user"
+
