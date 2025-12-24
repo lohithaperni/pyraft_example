@@ -99,3 +99,25 @@ class LoginPage(BasePage):
             elements = self.driver.find_elements(*self.ERROR_MESSAGE)
             return elements[0].text if elements else ""
 
+#=======================================================================================================
+
+    # Locators (class variables)
+    username_input = (By.ID, "username")
+    password_input = (By.ID, "password")
+    login_button = (By.ID, "login")
+
+
+    # Accessing locators using self
+    def enter_username(self, username):
+        self.driver.find_element(*self.username_input).send_keys(username)
+
+    def enter_password(self, password):
+        self.driver.find_element(*self.password_input).send_keys(password)
+
+    def click_login(self):
+        self.driver.find_element(*self.login_button).click()
+
+    def login(self, username, password):
+        self.enter_username(username)
+        self.enter_password(password)
+        self.click_login()

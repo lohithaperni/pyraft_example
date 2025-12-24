@@ -1,3 +1,5 @@
+import pytest
+
 from pages.login_page import LoginPage
 
 
@@ -11,7 +13,7 @@ def test_valid_login_revalu(driver, base_url, login_users):
 
     assert page.is_logged_in(), "Login should be successful"
 
-
+@pytest.mark.smoke
 def test_invalid_login_revalu(driver, base_url, login_users):
     """Test login with invalid credentials"""
     invalid = login_users["invalid_user"]

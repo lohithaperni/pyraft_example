@@ -3,4 +3,5 @@ pytest
 pyyaml
 requests
 psycopg2-binary
+webdriver-manager
 
